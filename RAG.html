@@ -1,0 +1,744 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RAG Simulator — Learn Retrieval Augmented Generation</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    :root {
+        --bg: #08090c;
+        --panel: #111318;
+        --panel-2: #171920;
+        --border: #272b35;
+        --text: #f5f7fa;
+        --muted: #8d94a3;
+        --blue: #5b8cff;
+        --blue-soft: rgba(91,140,255,.12);
+        --green: #39d98a;
+        --green-soft: rgba(57,217,138,.12);
+        --orange: #ffb454;
+        --orange-soft: rgba(255,180,84,.12);
+        --purple: #a978ff;
+        --purple-soft: rgba(169,120,255,.12);
+        --red: #ff667a;
+    }
+
+    body {
+        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+    }
+
+    button, input {
+        font: inherit;
+    }
+
+    .app {
+        max-width: 1500px;
+        margin: auto;
+        padding: 28px;
+    }
+
+    /* HEADER */
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 30px;
+        margin-bottom: 28px;
+    }
+
+    .eyebrow {
+        color: var(--blue);
+        text-transform: uppercase;
+        letter-spacing: 1.8px;
+        font-size: 12px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        font-size: clamp(30px, 4vw, 48px);
+        line-height: 1.05;
+        letter-spacing: -1.8px;
+    }
+
+    .subtitle {
+        color: var(--muted);
+        max-width: 700px;
+        margin-top: 12px;
+        line-height: 1.6;
+    }
+
+    .header-badge {
+        border: 1px solid var(--border);
+        background: var(--panel);
+        border-radius: 14px;
+        padding: 12px 16px;
+        color: var(--muted);
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    .header-badge strong {
+        color: var(--green);
+    }
+
+    /* CONTROL */
+
+    .control-panel {
+        background: linear-gradient(135deg, #11141a, #0d0f14);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 20px;
+        margin-bottom: 25px;
+    }
+
+    .control-label {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        color: var(--muted);
+        margin-bottom: 9px;
+    }
+
+    .query-row {
+        display: flex;
+        gap: 12px;
+    }
+
+    .query-input {
+        flex: 1;
+        background: #090b0f;
+        border: 1px solid var(--border);
+        color: white;
+        border-radius: 12px;
+        padding: 15px 16px;
+        outline: none;
+        transition: .2s;
+    }
+
+    .query-input:focus {
+        border-color: var(--blue);
+        box-shadow: 0 0 0 3px var(--blue-soft);
+    }
+
+    .run-btn {
+        background: white;
+        color: #08090c;
+        border: none;
+        border-radius: 12px;
+        padding: 0 22px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: .2s;
+    }
+
+    .run-btn:hover {
+        transform: translateY(-1px);
+        opacity: .9;
+    }
+
+    .examples {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 13px;
+    }
+
+    .example {
+        border: 1px solid var(--border);
+        background: var(--panel);
+        color: var(--muted);
+        padding: 7px 11px;
+        border-radius: 999px;
+        cursor: pointer;
+        font-size: 12px;
+    }
+
+    .example:hover {
+        color: white;
+        border-color: #414754;
+    }
+
+    /* PIPELINE */
+
+    .pipeline {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 8px;
+        margin-bottom: 25px;
+    }
+
+    .stage {
+        position: relative;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 13px 10px;
+        min-height: 92px;
+        cursor: pointer;
+        transition: .25s;
+    }
+
+    .stage:hover {
+        transform: translateY(-2px);
+        border-color: #3b404d;
+    }
+
+    .stage.active {
+        border-color: var(--blue);
+        background: var(--blue-soft);
+    }
+
+    .stage.done {
+        border-color: rgba(57,217,138,.5);
+    }
+
+    .stage-number {
+        font-size: 11px;
+        color: var(--muted);
+        margin-bottom: 9px;
+    }
+
+    .stage-icon {
+        font-size: 19px;
+        margin-bottom: 6px;
+    }
+
+    .stage-name {
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .stage-arrow {
+        position: absolute;
+        right: -10px;
+        top: 50%;
+        color: #4b5160;
+        z-index: 2;
+    }
+
+    /* MAIN */
+
+    .main-grid {
+        display: grid;
+        grid-template-columns: 1.2fr .8fr;
+        gap: 20px;
+    }
+
+    .panel {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .panel-header {
+        padding: 18px 20px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .panel-title {
+        font-weight: 700;
+        font-size: 15px;
+    }
+
+    .panel-subtitle {
+        color: var(--muted);
+        font-size: 12px;
+        margin-top: 4px;
+    }
+
+    .panel-body {
+        padding: 20px;
+    }
+
+    /* DOCUMENTS */
+
+    .doc-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .doc {
+        background: #0d0f14;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 14px;
+        transition: .3s;
+    }
+
+    .doc.relevant {
+        border-color: rgba(91,140,255,.6);
+        background: var(--blue-soft);
+    }
+
+    .doc.selected {
+        border-color: var(--green);
+        background: var(--green-soft);
+    }
+
+    .doc-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 9px;
+    }
+
+    .doc-name {
+        font-weight: 700;
+        font-size: 13px;
+    }
+
+    .doc-score {
+        font-size: 11px;
+        color: var(--green);
+        opacity: 0;
+        transition: .2s;
+    }
+
+    .doc.relevant .doc-score,
+    .doc.selected .doc-score {
+        opacity: 1;
+    }
+
+    .doc-text {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.55;
+    }
+
+    .tag {
+        display: inline-block;
+        font-size: 10px;
+        margin-top: 10px;
+        padding: 4px 7px;
+        border-radius: 6px;
+        background: #1b1e26;
+        color: var(--muted);
+    }
+
+    /* RIGHT SIDE */
+
+    .info-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .info-card {
+        background: #0d0f14;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 16px;
+    }
+
+    .info-title {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--muted);
+        margin-bottom: 12px;
+    }
+
+    .metric-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 9px 0;
+    }
+
+    .metric-label {
+        color: #b8bec9;
+        font-size: 13px;
+    }
+
+    .metric-value {
+        font-weight: 700;
+        font-size: 14px;
+    }
+
+    .green {
+        color: var(--green);
+    }
+
+    .blue {
+        color: var(--blue);
+    }
+
+    .purple {
+        color: var(--purple);
+    }
+
+    .orange {
+        color: var(--orange);
+    }
+
+    /* RETRIEVAL */
+
+    .retrieval-list {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+    }
+
+    .retrieval-item {
+        padding: 11px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: #11141a;
+    }
+
+    .retrieval-top {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 6px;
+    }
+
+    .retrieval-name {
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .score {
+        color: var(--green);
+        font-size: 11px;
+    }
+
+    .bar {
+        height: 4px;
+        background: #242833;
+        border-radius: 99px;
+        overflow: hidden;
+    }
+
+    .bar-fill {
+        height: 100%;
+        width: 0;
+        background: var(--green);
+        border-radius: inherit;
+        transition: width 1s ease;
+    }
+
+    /* PROMPT */
+
+    .prompt-box {
+        background: #090b0f;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 15px;
+        font-family: "SFMono-Regular", Consolas, monospace;
+        font-size: 11px;
+        line-height: 1.65;
+        color: #b9c0cc;
+        max-height: 340px;
+        overflow: auto;
+        white-space: pre-wrap;
+    }
+
+    .prompt-system {
+        color: var(--purple);
+    }
+
+    .prompt-query {
+        color: var(--blue);
+    }
+
+    .prompt-context {
+        color: var(--green);
+    }
+
+    /* ANSWER */
+
+    .answer {
+        background: linear-gradient(135deg, rgba(57,217,138,.08), rgba(91,140,255,.05));
+        border: 1px solid rgba(57,217,138,.3);
+        border-radius: 14px;
+        padding: 17px;
+        line-height: 1.65;
+        font-size: 14px;
+    }
+
+    .answer-label {
+        color: var(--green);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 10px;
+        font-weight: 700;
+        margin-bottom: 9px;
+    }
+
+    /* EXPLANATION */
+
+    .concept {
+        margin-top: 20px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 24px;
+    }
+
+    .concept h2 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .concept p {
+        color: var(--muted);
+        line-height: 1.7;
+        font-size: 13px;
+        max-width: 950px;
+    }
+
+    .formula {
+        margin-top: 17px;
+        background: #090b0f;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 15px;
+        text-align: center;
+        font-family: monospace;
+        color: #d5dae3;
+    }
+
+    /* LOG */
+
+    .log {
+        margin-top: 20px;
+    }
+
+    .log-item {
+        display: flex;
+        gap: 12px;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255,255,255,.05);
+        font-size: 12px;
+    }
+
+    .log-time {
+        color: var(--muted);
+        width: 65px;
+    }
+
+    .log-status {
+        color: var(--green);
+        font-weight: 700;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 1050px) {
+        .pipeline {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .stage-arrow {
+            display: none;
+        }
+
+        .main-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 650px) {
+        .app {
+            padding: 16px;
+        }
+
+        header {
+            flex-direction: column;
+        }
+
+        .query-row {
+            flex-direction: column;
+        }
+
+        .run-btn {
+            padding: 13px;
+        }
+
+        .pipeline {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .doc-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- HEADER -->
+    <header>
+        <div>
+            <div class="eyebrow">Interactive Learning Lab</div>
+            <h1>RAG Simulator</h1>
+            <p class="subtitle">
+                See exactly what happens when a user asks a question and
+                Retrieval Augmented Generation finds the right information,
+                builds context, and generates an answer.
+            </p>
+        </div>
+
+        <div class="header-badge">
+            <strong>LIVE</strong> · RAG Pipeline
+        </div>
+    </header>
+
+    <!-- QUERY -->
+    <section class="control-panel">
+
+        <div class="control-label">User Query</div>
+
+        <div class="query-row">
+            <input
+                id="queryInput"
+                class="query-input"
+                value="What is the deadline of Project X?"
+                placeholder="Ask something about the documents..."
+            />
+
+            <button class="run-btn" onclick="runRAG()">
+                Run RAG →
+            </button>
+        </div>
+
+        <div class="examples">
+            <button class="example" onclick="setQuery('What is the deadline of Project X?')">
+                Project X deadline
+            </button>
+
+            <button class="example" onclick="setQuery('Who is responsible for Project X?')">
+                Project owner
+            </button>
+
+            <button class="example" onclick="setQuery('What technology is Project X using?')">
+                Technology
+            </button>
+
+            <button class="example" onclick="setQuery('What is the budget for Project X?')">
+                Project budget
+            </button>
+        </div>
+
+    </section>
+
+    <!-- PIPELINE -->
+    <section class="pipeline">
+
+        <div class="stage" id="stage1">
+            <div class="stage-number">01</div>
+            <div class="stage-icon">📄</div>
+            <div class="stage-name">Documents</div>
+            <div class="stage-arrow">→</div>
+        </div>
+
+        <div class="stage" id="stage2">
+            <div class="stage-number">02</div>
+            <div class="stage-icon">✂️</div>
+            <div class="stage-name">Chunking</div>
+            <div class="stage-arrow">→</div>
+        </div>
+
+        <div class="stage" id="stage3">
+            <div class="stage-number">03</div>
+            <div class="stage-icon">🔢</div>
+            <div class="stage-name">Embeddings</div>
+            <div class="stage-arrow">→</div>
+        </div>
+
+        <div class="stage" id="stage4">
+            <div class="stage-number">04</div>
+            <div class="stage-icon">🗄️</div>
+            <div class="stage-name">Vector Store</div>
+            <div class="stage-arrow">→</div>
+        </div>
+
+        <div class="stage" id="stage5">
+            <div class="stage-number">05</div>
+            <div class="stage-icon">🔎</div>
+            <div class="stage-name">Retrieval</div>
+            <div class="stage-arrow">→</div>
+        </div>
+
+        <div class="stage" id="stage6">
+            <div class="stage-number">06</div>
+            <div class="stage-icon">📊</div>
+            <div class="stage-name">Top-K</div>
+            <div class="stage-arrow">→</div>
+        </div>
+
+        <div class="stage" id="stage7">
+            <div class="stage-number">07</div>
+            <div class="stage-icon">🧩</div>
+            <div class="stage-name">Augmentation</div>
+            <div class="stage-arrow">→</div>
+        </div>
+
+        <div class="stage" id="stage8">
+            <div class="stage-number">08</div>
+            <div class="stage-icon">🤖</div>
+            <div class="stage-name">Generation</div>
+        </div>
+
+    </section>
+
+    <!-- MAIN -->
+    <div class="main-grid">
+
+        <!-- DOCUMENT SIDE -->
+        <section class="panel">
+
+            <div class="panel-header">
+                <div>
+                    <div class="panel-title">Knowledge Base</div>
+                    <div class="panel-subtitle">
+                        Simulated project documentation
+                    </div>
+                </div>
+
+                <div class="metric-value blue" id="docCount">
+                    100 documents
+                </div>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="doc-grid" id="docGrid">
+
+                    <div class="doc" data-keywords="project x deadline october completion">
+                        <div class="doc-head">
+                            <div class="doc-name">Project X — Timeline</div>
+                            <div class="doc-score">98%</div>
+                        </div>
+                        <div class="doc-text">
+                            Project X is scheduled for final completion
+                            on October 15, 2026. Final testing must be completed
+                            one week before delivery.
+                        </div>
+                        <span class="tag">Timeline</span>
+                    </div>
+
+                    <div class="doc" data-keywords="project x deadline milestones">
+                        <div class="doc-hea
+```
