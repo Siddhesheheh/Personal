@@ -2,1774 +2,1471 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description"
-        content="Siddhesh Mahadik — Software Engineer, Salesforce Developer and aspiring Product Manager.">
-
-    <title>Siddhesh Mahadik — Software Engineer · Product</title>
-
-    <style>
-        :root {
-            --bg: #f5f5f7;
-            --surface: rgba(255, 255, 255, .78);
-            --card: #fff;
-            --text: #1d1d1f;
-            --muted: #6e6e73;
-            --line: rgba(0, 0, 0, .08);
-            --blue: #0071e3;
-            --blue2: #0077ed;
-            --dark: #101010;
-            --radius: 28px;
-            --max: 1160px;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "SF Pro Display",
-                "SF Pro Text",
-                "Helvetica Neue",
-                Arial,
-                sans-serif;
-
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.55;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* =========================
-   NAVIGATION
-========================= */
-
-        .nav {
-            position: fixed;
-            z-index: 50;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 64px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background: rgba(245, 245, 247, .76);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-
-            border-bottom: 1px solid rgba(0, 0, 0, .06);
-        }
-
-        .nav-inner {
-            width: min(calc(100% - 40px), var(--max));
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .brand {
-            font-weight: 650;
-            font-size: 17px;
-            letter-spacing: -.02em;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 27px;
-            font-size: 14px;
-            color: #424245;
-        }
-
-        .nav-links a {
-            transition: color .2s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--blue);
-        }
-
-        .menu {
-            display: none;
-            border: 0;
-            background: none;
-            font-size: 21px;
-            cursor: pointer;
-        }
-
-        main {
-            padding-top: 64px;
-        }
-
-        section {
-            width: min(calc(100% - 40px), var(--max));
-            margin: auto;
-            scroll-margin-top: 90px;
-        }
-
-        /* =========================
-   HERO
-========================= */
-
-        .hero {
-            min-height: calc(100vh - 64px);
-            display: grid;
-            place-items: center;
-            text-align: center;
-            padding: 90px 0 100px;
-        }
-
-        .hero-inner {
-            max-width: 900px;
-        }
-
-        .pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-
-            background: rgba(0, 113, 227, .09);
-            color: var(--blue);
-
-            padding: 8px 14px;
-            border-radius: 999px;
-
-            font-size: 13px;
-            font-weight: 650;
-
-            margin-bottom: 27px;
-        }
-
-        .pill i {
-            width: 7px;
-            height: 7px;
-            background: #34c759;
-            border-radius: 50%;
-            display: block;
-        }
-
-        h1 {
-            font-size: clamp(54px, 9vw, 104px);
-            line-height: .96;
-            letter-spacing: -.068em;
-            font-weight: 700;
-            margin-bottom: 30px;
-        }
-
-        .gradient {
-            background: linear-gradient(110deg,
-                    #111 12%,
-                    #555 48%,
-                    #0071e3 92%);
-
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .hero p {
-            max-width: 760px;
-            margin: auto;
-
-            color: var(--muted);
-
-            font-size: clamp(18px, 2.2vw, 24px);
-            line-height: 1.42;
-            letter-spacing: -.025em;
-        }
-
-        .actions {
-            display: flex;
-            justify-content: center;
-            gap: 11px;
-            flex-wrap: wrap;
-            margin-top: 36px;
-        }
-
-        .btn {
-            min-height: 46px;
-            padding: 0 20px;
-
-            border-radius: 999px;
-
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 15px;
-            font-weight: 600;
-
-            transition: .2s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .primary {
-            background: var(--blue);
-            color: white;
-            box-shadow: 0 8px 24px rgba(0, 113, 227, .22);
-        }
-
-        .secondary {
-            background: rgba(0, 0, 0, .055);
-        }
-
-        .scroll {
-            margin-top: 62px;
-
-            color: #86868b;
-
-            font-size: 11px;
-            letter-spacing: .1em;
-            text-transform: uppercase;
-        }
-
-        /* =========================
-   SECTION HEADINGS
-========================= */
-
-        .section-head {
-            margin-bottom: 34px;
-        }
-
-        .kicker {
-            color: var(--blue);
-            font-size: 14px;
-            font-weight: 650;
-            margin-bottom: 9px;
-        }
-
-        h2 {
-            font-size: clamp(36px, 5vw, 58px);
-            line-height: 1.02;
-            letter-spacing: -.055em;
-        }
-
-        .intro {
-            max-width: 720px;
-            margin-top: 14px;
-
-            color: var(--muted);
-            font-size: 18px;
-        }
-
-        /* =========================
-   ABOUT
-========================= */
-
-        .about {
-            padding: 95px 0 125px;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1.35fr .65fr;
-            gap: 20px;
-        }
-
-        .glass {
-            background: var(--surface);
-
-            border: 1px solid rgba(255, 255, 255, .8);
-            border-radius: var(--radius);
-
-            box-shadow: 0 20px 60px rgba(0, 0, 0, .07);
-
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-        }
-
-        .about-copy {
-            padding: 42px;
-        }
-
-        .about-copy p {
-            font-size: 20px;
-            line-height: 1.55;
-            letter-spacing: -.02em;
-        }
-
-        .about-copy p+p {
-            margin-top: 19px;
-        }
-
-        .fact-stack {
-            display: grid;
-            gap: 20px;
-        }
-
-        .fact {
-            padding: 28px;
-        }
-
-        .fact-label {
-            font-size: 13px;
-            color: var(--muted);
-            margin-bottom: 7px;
-        }
-
-        .fact-value {
-            font-size: 19px;
-            font-weight: 600;
-            letter-spacing: -.02em;
-        }
-
-        /* =========================
-   FOCUS / SKILLS
-========================= */
-
-        .focus {
-            padding-bottom: 125px;
-        }
-
-        .focus-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 17px;
-        }
-
-        .focus-card {
-            min-height: 190px;
-            padding: 30px;
-
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 24px;
-
-            transition:
-                transform .25s,
-                box-shadow .25s;
-        }
-
-        .focus-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, .08);
-        }
-
-        .num {
-            color: #a1a1a6;
-            font-size: 13px;
-            margin-bottom: 26px;
-        }
-
-        .focus-card h3 {
-            font-size: 22px;
-            letter-spacing: -.035em;
-            margin-bottom: 8px;
-        }
-
-        .focus-card p {
-            font-size: 15px;
-            color: var(--muted);
-        }
-
-        /* =========================
-   EXPERIENCE
-========================= */
-
-        .experience {
-            padding-bottom: 125px;
-        }
-
-        .timeline {
-            position: relative;
-            display: grid;
-            gap: 17px;
-        }
-
-        .timeline:before {
-            content: "";
-
-            position: absolute;
-            left: 14px;
-            top: 22px;
-            bottom: 22px;
-
-            width: 1px;
-
-            background: #d2d2d7;
-        }
-
-        .role {
-            position: relative;
-
-            padding: 34px 36px 34px 64px;
-
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 26px;
-        }
-
-        .role:before {
-            content: "";
-
-            position: absolute;
-            left: 8px;
-            top: 39px;
-
-            width: 13px;
-            height: 13px;
-
-            border-radius: 50%;
-
-            background: var(--blue);
-
-            border: 4px solid var(--bg);
-        }
-
-        .role-top {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-
-            margin-bottom: 18px;
-        }
-
-        .role h3 {
-            font-size: 25px;
-            letter-spacing: -.035em;
-        }
-
-        .company {
-            color: var(--blue);
-            font-weight: 600;
-        }
-
-        .location,
-        .date {
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        .date {
-            text-align: right;
-            white-space: nowrap;
-        }
-
-        .role ul {
-            padding-left: 20px;
-            color: #424245;
-        }
-
-        .role li+li {
-            margin-top: 9px;
-        }
-
-        /* =========================
-   PROJECTS / CASE STUDIES
-========================= */
-
-        .projects {
-            padding-bottom: 125px;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: 1.2fr .8fr;
-            gap: 20px;
-        }
-
-        .project {
-            min-height: 390px;
-
-            padding: 38px;
-
-            border-radius: 30px;
-
-            background: #111;
-            color: white;
-
-            position: relative;
-            overflow: hidden;
-
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project.alt {
-            background: #fff;
-            color: var(--text);
-            border: 1px solid var(--line);
-        }
-
-        .project .tag {
-            color: #66b7ff;
-            font-size: 13px;
-            font-weight: 650;
-            margin-bottom: 17px;
-        }
-
-        .project.alt .tag {
-            color: var(--blue);
-        }
-
-        .project h3 {
-            font-size: 32px;
-            line-height: 1.05;
-            letter-spacing: -.045em;
-            margin-bottom: 16px;
-        }
-
-        .project p {
-            color: #a1a1a6;
-            max-width: 600px;
-        }
-
-        .project.alt p {
-            color: var(--muted);
-        }
-
-        .project ul {
-            margin-top: 22px;
-            padding-left: 19px;
-
-            color: #c7c7cc;
-
-            font-size: 15px;
-
-            position: relative;
-            z-index: 2;
-        }
-
-        .project.alt ul {
-            color: #424245;
-        }
-
-        .project li+li {
-            margin-top: 9px;
-        }
-
-        .project:after {
-            content: "";
-
-            position: absolute;
-
-            width: 300px;
-            height: 300px;
-
-            right: -130px;
-            bottom: -160px;
-
-            border-radius: 50%;
-
-            background:
-                radial-gradient(circle,
-                    rgba(0, 113, 227, .4),
-                    transparent 68%);
-        }
-
-        /* Project actions */
-
-        .project-actions {
-            display: flex;
-            gap: 9px;
-            flex-wrap: wrap;
-
-            margin-top: auto;
-            padding-top: 28px;
-
-            position: relative;
-            z-index: 5;
-        }
-
-        .project-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-
-            min-height: 38px;
-
-            padding: 0 15px;
-
-            border-radius: 999px;
-
-            font-size: 13px;
-            font-weight: 600;
-
-            border: 1px solid rgba(255, 255, 255, .18);
-
-            background: rgba(255, 255, 255, .08);
-
-            transition:
-                background .2s ease,
-                transform .2s ease;
-        }
-
-        .project-button:hover {
-            background: rgba(255, 255, 255, .16);
-            transform: translateY(-2px);
-        }
-
-        .project.alt .project-button {
-            background: rgba(0, 0, 0, .055);
-            border-color: rgba(0, 0, 0, .08);
-            color: var(--text);
-        }
-
-        .project.alt .project-button:hover {
-            background: rgba(0, 0, 0, .09);
-        }
-
-        /* =========================
-   EDUCATION
-========================= */
-
-        .education {
-            padding-bottom: 125px;
-        }
-
-        .edu-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .edu-card {
-            padding: 36px;
-
-            background: #fff;
-            border: 1px solid var(--line);
-
-            border-radius: 28px;
-        }
-
-        .edu-card.dark {
-            background: #111;
-            color: #fff;
-            border: 0;
-        }
-
-        .edu-card h3 {
-            font-size: 25px;
-            letter-spacing: -.04em;
-            margin-bottom: 22px;
-        }
-
-        .edu-card ul {
-            list-style: none;
-
-            display: grid;
-            gap: 17px;
-        }
-
-        .edu-card li {
-            font-size: 15px;
-            color: var(--muted);
-        }
-
-        .edu-card.dark li {
-            color: #a1a1a6;
-        }
-
-        .edu-card li:before {
-            content: "•";
-            color: var(--blue);
-            margin-right: 9px;
-        }
-
-        /* =========================
-   CONTACT
-========================= */
-
-        .contact {
-            padding-bottom: 105px;
-        }
-
-        .contact-card {
-            background: #111;
-            color: #fff;
-
-            border-radius: 34px;
-
-            padding: clamp(40px, 7vw, 76px);
-
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-card:after {
-            content: "";
-
-            position: absolute;
-
-            width: 430px;
-            height: 430px;
-
-            right: -150px;
-            top: -190px;
-
-            border-radius: 50%;
-
-            background:
-                radial-gradient(circle,
-                    rgba(0, 113, 227, .45),
-                    transparent 65%);
-        }
-
-        .contact-card>* {
-            position: relative;
-            z-index: 1;
-        }
-
-        .contact-card p {
-            max-width: 650px;
-
-            color: #a1a1a6;
-
-            font-size: 18px;
-
-            margin: 17px 0 29px;
-        }
-
-        .links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .link {
-            display: inline-flex;
-            align-items: center;
-
-            min-height: 44px;
-
-            padding: 0 16px;
-
-            border: 1px solid rgba(255, 255, 255, .14);
-
-            border-radius: 999px;
-
-            background: rgba(255, 255, 255, .06);
-
-            font-size: 14px;
-        }
-
-        .link:hover {
-            background: rgba(255, 255, 255, .12);
-        }
-
-        /* =========================
-   FOOTER
-========================= */
-
-        footer {
-            width: min(calc(100% - 40px), var(--max));
-
-            margin: auto;
-
-            padding-bottom: 32px;
-
-            display: flex;
-            justify-content: space-between;
-
-            color: #86868b;
-
-            font-size: 12px;
-        }
-
-        /* =========================
-   ANIMATION
-========================= */
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(22px);
-
-            transition:
-                opacity .7s,
-                transform .7s;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: none;
-        }
-
-        /* =========================
-   RESPONSIVE
-========================= */
-
-        @media(max-width:820px) {
-
-            .nav-links {
-                position: absolute;
-
-                display: none;
-
-                top: 64px;
-                left: 20px;
-                right: 20px;
-
-                flex-direction: column;
-
-                padding: 15px;
-
-                background: rgba(255, 255, 255, .95);
-
-                border-radius: 18px;
-
-                box-shadow: 0 20px 50px rgba(0, 0, 0, .12);
-            }
-
-            .nav-links.open {
-                display: flex;
-            }
-
-            .nav-links a {
-                padding: 8px;
-            }
-
-            .menu {
-                display: block;
-            }
-
-            .about-grid,
-            .project-grid,
-            .edu-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .focus-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .role-top {
-                flex-direction: column;
-            }
-
-            .date {
-                text-align: left;
-            }
-        }
-
-        @media(max-width:560px) {
-
-            section,
-            .nav-inner,
-            footer {
-                width: min(calc(100% - 28px), var(--max));
-            }
-
-            h1 {
-                font-size: 57px;
-            }
-
-            .hero {
-                min-height: auto;
-                padding: 80px 0 90px;
-            }
-
-            .hero p {
-                font-size: 18px;
-            }
-
-            .about-copy,
-            .fact,
-            .focus-card,
-            .edu-card {
-                padding: 26px;
-            }
-
-            .focus-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .role {
-                padding: 28px 22px 28px 48px;
-            }
-
-            .role h3 {
-                font-size: 21px;
-            }
-
-            .role:before {
-                left: 4px;
-            }
-
-            .timeline:before {
-                left: 10px;
-            }
-
-            .project {
-                min-height: auto;
-                padding: 30px;
-            }
-
-            .contact-card {
-                padding: 36px 25px;
-            }
-
-            footer {
-                flex-direction: column;
-                gap: 8px;
-            }
-        }
-
-        @media(prefers-reduced-motion:reduce) {
-
-            html {
-                scroll-behavior: auto;
-            }
-
-            * {
-                transition-duration: .01ms !important;
-            }
-
-            .reveal {
-                opacity: 1;
-                transform: none;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Siddhesh Mahadik · Salesforce engineer moving into product</title>
+  <meta name="description"
+    content="Siddhesh Mahadik is a Salesforce software engineer in Mumbai who asks why before he builds, and is moving into product management.">
+  <meta name="theme-color" content="#FBFBFD" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#141416" media="(prefers-color-scheme: dark)">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230B5FFF'/%3E%3Ctext x='32' y='42' font-family='Helvetica,Arial,sans-serif' font-size='28' font-weight='700' fill='white' text-anchor='middle'%3ESM%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #FBFBFD;
+      --surface: #FFFFFF;
+      --tint: #F0F4FF;
+      --ink: #1D1D1F;
+      --muted: #6E6E73;
+      --line: rgba(0, 0, 0, 0.09);
+      --accent: #0B5FFF;
+      --accent-ink: #FFFFFF;
+      --good: #1FA45B;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .04), 0 12px 32px -12px rgba(20, 40, 90, .14);
+      --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Segoe UI", system-ui, sans-serif;
+      --wrap: 1080px;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #141416;
+        --surface: #1E1E21;
+        --tint: #1A2138;
+        --ink: #F5F5F7;
+        --muted: #A1A1A6;
+        --line: rgba(255, 255, 255, 0.12);
+        --accent: #4C8DFF;
+        --accent-ink: #0B0B0D;
+        --good: #34C77B;
+        --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 12px 32px -12px rgba(0, 0, 0, .6);
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #141416;
+      --surface: #1E1E21;
+      --tint: #1A2138;
+      --ink: #F5F5F7;
+      --muted: #A1A1A6;
+      --line: rgba(255, 255, 255, 0.12);
+      --accent: #4C8DFF;
+      --accent-ink: #0B0B0D;
+      --good: #34C77B;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 12px 32px -12px rgba(0, 0, 0, .6);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      height: 100%;
+      scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 72px);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      html {
+        scroll-behavior: smooth;
+      }
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    ul {
+      margin: 0;
+    }
+
+    ul {
+      padding: 0;
+      list-style: none;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 8px;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: var(--wrap);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Nav */
+    .nav {
+      position: sticky;
+      top: env(safe-area-inset-top, 0px);
+      z-index: 20;
+      background: color-mix(in srgb, var(--bg) 78%, transparent);
+      -webkit-backdrop-filter: saturate(180%) blur(18px);
+      backdrop-filter: saturate(180%) blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .brand {
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      font-size: 16px;
+    }
+
+    .nav ul {
+      display: flex;
+      gap: 28px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav ul a {
+      transition: color .2s;
+    }
+
+    .nav ul a:hover {
+      color: var(--ink);
+    }
+
+    .nav .cta {
+      font-size: 14px;
+      font-weight: 500;
+      padding: 7px 16px;
+      border-radius: 980px;
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    @media (max-width: 760px) {
+      .nav ul {
+        display: none;
+      }
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 980px;
+      font-weight: 500;
+      font-size: 16px;
+      transition: transform .15s ease, background .2s;
+    }
+
+    .btn:active {
+      transform: scale(.97);
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: var(--accent-ink);
+    }
+
+    .btn.primary:hover {
+      filter: brightness(1.08);
+    }
+
+    .btn.ghost {
+      color: var(--accent);
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+
+    .btn.ghost:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: clamp(64px, 12vw, 132px) 0 clamp(56px, 9vw, 104px);
+    }
+
+    .hero .wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+      gap: 56px;
+      align-items: end;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 14px 6px 12px;
+      border-radius: 980px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .status i {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--good);
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--good) 22%, transparent);
+    }
+
+    h1 {
+      margin-top: 28px;
+      font-size: clamp(44px, 8.2vw, 88px);
+      line-height: 1.02;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+    }
+
+    .hero .lede {
+      margin-top: 28px;
+      max-width: 34em;
+      font-size: clamp(19px, 2.2vw, 23px);
+      line-height: 1.45;
+      color: var(--muted);
+      letter-spacing: -0.01em;
+    }
+
+    .hero .lede b {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .hero .actions {
+      margin-top: 36px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      align-items: center;
+    }
+
+    .now {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .now h2 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .now li+li {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .now strong {
+      display: block;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .now span {
+      display: block;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 860px) {
+      .hero .wrap {
+        grid-template-columns: 1fr;
+        gap: 44px;
+      }
+    }
+
+    /* One orchestrated entrance, hero only */
+    @media (prefers-reduced-motion: no-preference) {
+      .hero .reveal {
+        opacity: 0;
+        transform: translateY(14px);
+        animation: rise .8s cubic-bezier(.2, .7, .2, 1) forwards;
+      }
+
+      .hero .reveal:nth-child(1) {
+        animation-delay: .05s;
+      }
+
+      .hero .reveal:nth-child(2) {
+        animation-delay: .15s;
+      }
+
+      .hero .reveal:nth-child(3) {
+        animation-delay: .27s;
+      }
+
+      .hero .reveal:nth-child(4) {
+        animation-delay: .38s;
+      }
+
+      .hero .now.reveal {
+        animation-delay: .5s;
+      }
+
+      @keyframes rise {
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    }
+
+    /* Sections */
+    section {
+      padding: clamp(56px, 9vw, 104px) 0;
+    }
+
+    .sec-head {
+      max-width: 640px;
+      margin-bottom: 44px;
+    }
+
+    h2.title {
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.06;
+      font-weight: 700;
+      letter-spacing: -0.035em;
+    }
+
+    .sec-head p {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 19px;
+      line-height: 1.5;
+    }
+
+    /* Work: the lens switch */
+    .work-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .work-top .sec-head {
+      margin-bottom: 0;
+    }
+
+    .seg {
+      position: relative;
+      display: inline-grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 4px;
+      border-radius: 980px;
+      background: color-mix(in srgb, var(--ink) 8%, transparent);
+      min-width: 260px;
+    }
+
+    .seg button {
+      position: relative;
+      z-index: 1;
+      appearance: none;
+      border: 0;
+      background: none;
+      cursor: pointer;
+      font: inherit;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--muted);
+      padding: 9px 18px;
+      border-radius: 980px;
+      transition: color .25s;
+    }
+
+    .seg button[aria-pressed="true"] {
+      color: var(--ink);
+    }
+
+    .seg .thumb {
+      position: absolute;
+      top: 4px;
+      bottom: 4px;
+      left: 4px;
+      width: calc(50% - 4px);
+      border-radius: 980px;
+      background: var(--surface);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .18);
+      transition: transform .35s cubic-bezier(.3, .8, .3, 1);
+    }
+
+    .seg[data-lens="product"] .thumb {
+      transform: translateX(100%);
+    }
+
+    .impact {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 32px;
+      align-items: center;
+      padding: 30px 36px;
+    }
+
+    .row+.row {
+      border-top: 1px solid var(--line);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 44px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--accent);
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 8px;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .say {
+      display: grid;
+    }
+
+    .say p {
+      grid-area: 1 / 1;
+      font-size: 19px;
+      line-height: 1.45;
+      letter-spacing: -0.01em;
+      transition: opacity .3s ease, transform .3s ease;
+    }
+
+    .say .prod {
+      opacity: 0;
+      transform: translateY(6px);
+      pointer-events: none;
+    }
+
+    .impact[data-lens="product"] .say .eng {
+      opacity: 0;
+      transform: translateY(-6px);
+      pointer-events: none;
+    }
+
+    .impact[data-lens="product"] .say .prod {
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+    }
+
+    .lens-note {
+      margin-top: 16px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 720px) {
+      .row {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 26px 24px;
+      }
+
+      .seg {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .say p,
+      .seg .thumb {
+        transition: none;
+      }
+    }
+
+    /* Case study */
+    .case {
+      background: var(--tint);
+      border-radius: 36px;
+      padding: clamp(28px, 5vw, 64px);
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+      gap: clamp(32px, 5vw, 64px);
+      align-items: start;
+    }
+
+    .case h2.title {
+      font-size: clamp(30px, 4.4vw, 46px);
+    }
+
+    .case .intro {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .flow {
+      margin-top: 28px;
+    }
+
+    .flow li {
+      position: relative;
+      padding-left: 28px;
+      font-size: 16px;
+      padding-bottom: 14px;
+    }
+
+    .flow li::before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 9px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .flow li::after {
+      content: "";
+      position: absolute;
+      left: 8px;
+      top: 20px;
+      bottom: -3px;
+      width: 1px;
+      background: color-mix(in srgb, var(--accent) 35%, transparent);
+    }
+
+    .flow li:last-child::after {
+      display: none;
+    }
+
+    .flow b {
+      font-weight: 600;
+    }
+
+    .case .links {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    /* Links stay hidden until you replace href="#" with a real URL */
+    /* Case-study buttons use placeholder URLs until real links are added. */
+
+    .discover {
+      background: var(--surface);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 12px;
+    }
+
+    .discover-label {
+      padding: 14px 16px 8px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .feat {
+      display: grid;
+      gap: 4px;
+    }
+
+    .feat button {
+      appearance: none;
+      border: 0;
+      background: none;
+      cursor: pointer;
+      text-align: left;
+      font: inherit;
+      color: inherit;
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 16px;
+      transition: background .2s;
+    }
+
+    .feat button:hover {
+      background: color-mix(in srgb, var(--ink) 5%, transparent);
+    }
+
+    .feat button[aria-expanded="true"] {
+      background: var(--tint);
+    }
+
+    .feat .name {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .feat .name svg {
+      flex: none;
+      width: 16px;
+      height: 16px;
+      transition: transform .3s;
+      color: var(--muted);
+    }
+
+    .feat button[aria-expanded="true"] .name svg {
+      transform: rotate(45deg);
+      color: var(--accent);
+    }
+
+    .feat .more {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows .3s ease;
+    }
+
+    .feat button[aria-expanded="true"] .more {
+      grid-template-rows: 1fr;
+    }
+
+    .feat .more div {
+      overflow: hidden;
+    }
+
+    .feat .more p {
+      padding-top: 6px;
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    @media (max-width: 860px) {
+      .case-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .case {
+        border-radius: 28px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .feat .more,
+      .feat .name svg {
+        transition: none;
+      }
+    }
+
+    /* Experience timeline */
+    .tl {
+      position: relative;
+      margin-left: 6px;
+    }
+
+    .tl::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: var(--line);
+    }
+
+    .job {
+      position: relative;
+      padding: 0 0 52px 40px;
+    }
+
+    .job:last-child {
+      padding-bottom: 0;
+    }
+
+    .job::before {
+      content: "";
+      position: absolute;
+      left: -5px;
+      top: 9px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--accent);
+    }
+
+    .job.now-job::before {
+      background: var(--accent);
+      box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 20%, transparent);
+    }
+
+    .job h3 {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+
+    .job .co {
+      color: var(--muted);
+      font-size: 16px;
+      margin-top: 2px;
+    }
+
+    .role+.role {
+      margin-top: 32px;
+    }
+
+    .role .when {
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .role h4 {
+      margin: 0;
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .job ul {
+      margin-top: 12px;
+      max-width: 46em;
+    }
+
+    .job li {
+      position: relative;
+      padding-left: 20px;
+      margin-top: 8px;
+      font-size: 16px;
+      color: color-mix(in srgb, var(--ink) 82%, var(--bg));
+    }
+
+    .job li::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 11px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--muted);
+    }
+
+    /* Projects */
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+      gap: 56px;
+    }
+
+    .split .sec-head {
+      margin-bottom: 0;
+    }
+
+    .proj {
+      padding: 32px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .proj:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .proj h3 {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+
+    .proj .tag {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 3px 12px;
+      border-radius: 980px;
+      background: var(--tint);
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .proj p {
+      margin-top: 14px;
+      color: color-mix(in srgb, var(--ink) 82%, var(--bg));
+      max-width: 40em;
+    }
+
+    @media (max-width: 860px) {
+      .split {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    /* Skills */
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 40px;
+    }
+
+    .skills h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .skills li {
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+      font-size: 17px;
+      letter-spacing: -0.01em;
+    }
+
+    .skills li:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    @media (max-width: 860px) {
+      .skills {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    /* Education */
+    .edu {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 32px;
+    }
+
+    .panel h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .panel .big {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+
+    .panel .sub {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .panel li {
+      padding: 12px 0;
+      border-top: 1px solid var(--line);
+      font-size: 16px;
+    }
+
+    .panel li:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .panel li span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 760px) {
+      .edu {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Contact */
+    .contact {
+      padding-top: clamp(40px, 6vw, 72px);
+    }
+
+    .contact-card {
+      border-radius: 36px;
+      background: var(--ink);
+      color: var(--bg);
+      padding: clamp(36px, 7vw, 88px);
+    }
+
+    .contact-card h2 {
+      font-size: clamp(36px, 6.4vw, 72px);
+      line-height: 1.03;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      max-width: 12em;
+    }
+
+    .contact-card p {
+      margin-top: 20px;
+      max-width: 30em;
+      font-size: 19px;
+      opacity: .72;
+    }
+
+    .contact-card .actions {
+      margin-top: 36px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .contact-card .btn.primary {
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    .contact-card .btn.line {
+      border: 1px solid color-mix(in srgb, var(--bg) 35%, transparent);
+      color: var(--bg);
+    }
+
+    .contact-card .btn.line:hover {
+      background: color-mix(in srgb, var(--bg) 12%, transparent);
+    }
+
+    .contact-card :focus-visible {
+      outline-color: var(--bg);
+    }
+
+    footer {
+      padding: 40px 0 56px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+    }
+  </style>
 </head>
 
 <body>
 
-    <header class="nav">
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="Siddhesh Mahadik, back to top">Siddhesh Mahadik</a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#case-study">Case studies</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+        </ul>
+      </nav>
+      <a class="cta" href="#contact">Get in touch</a>
+    </div>
+  </header>
 
-        <div class="nav-inner">
+  <main id="top">
 
-            <a class="brand" href="#top">
-                Siddhesh Mahadik
-            </a>
-
-            <button class="menu" id="menu" aria-label="Open navigation">
-                ☰
-            </button>
-
-            <nav class="nav-links" id="nav">
-
-                <a href="#about">About</a>
-
-                <a href="#experience">Experience</a>
-
-                <a href="#projects">Projects</a>
-
-                <a href="#education">Education</a>
-
-                <a href="#contact">Contact</a>
-
-            </nav>
-
+    <!-- Hero -->
+    <div class="hero">
+      <div class="wrap">
+        <div>
+          <div class="reveal"><span class="status"><i></i>Open to product roles in Mumbai</span></div>
+          <h1 class="reveal">I ask why before I build.</h1>
+          <p class="lede reveal">I'm a Salesforce engineer at NEC Software Solutions with <b>2+ years</b> of shipping
+            customer-facing solutions. Now I'm moving into product management, where I can decide what's worth building
+            as well as how.</p>
+          <div class="actions reveal">
+            <a class="btn primary" href="#contact">Let's talk</a>
+            <a class="btn ghost" href="#case-study">Read my case study</a>
+          </div>
         </div>
 
-    </header>
+        <aside class="now reveal" aria-label="Right now">
+          <h2>Right now</h2>
+          <ul>
+            <li><strong>Software Engineer</strong><span>NEC Software Solutions (India)</span></li>
+            <li><strong>Product Management</strong><span>Moving from engineering into product</span></li>
+            <li><strong>Building case studies</strong><span>Research → decisions → PRDs → prototypes</span></li>
+          </ul>
+        </aside>
+      </div>
+    </div>
 
+    <!-- Impact -->
+    <section id="work" aria-labelledby="work-title" style="padding-top:0">
+      <div class="wrap">
+        <div class="work-top">
+          <div class="sec-head">
+            <h2 class="title" id="work-title">Same work, two lenses.</h2>
+            <p>Every project has a build and a decision behind it. Switch views to see both.</p>
+          </div>
+          <div class="seg" id="seg" data-lens="engineer" role="group" aria-label="Choose a lens">
+            <span class="thumb" aria-hidden="true"></span>
+            <button type="button" data-lens="engineer" aria-pressed="true">What I built</button>
+            <button type="button" data-lens="product" aria-pressed="false">Why it mattered</button>
+          </div>
+        </div>
 
-    <main id="top">
+        <div class="impact" id="impact" data-lens="engineer" aria-live="polite">
+          <div class="row">
+            <div class="metric"><strong>−30%</strong><span>custom code</span></div>
+            <div class="say">
+              <p class="eng">Replaced complex Apex logic in Sales Cloud with Salesforce Flows.</p>
+              <p class="prod">Picked the simpler path so there was less code to own, and the team could change it
+                faster.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="metric"><strong>−20%</strong><span>component load time</span></div>
+            <div class="say">
+              <p class="eng">Re-architected Lightning Web Components into modular, reusable parts.</p>
+              <p class="prod">Made screens load faster for users and easier to maintain for the team.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="metric"><strong>−40%</strong><span>profile complexity</span></div>
+            <div class="say">
+              <p class="eng">Moved Service Cloud access from Profiles to Permission Sets.</p>
+              <p class="prod">Simplified how access is granted, so it's easier to manage as the org grows.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="metric"><strong>−50%</strong><span>manual case triage</span></div>
+            <div class="say">
+              <p class="eng">Automated Email-to-Case conversion and case prioritization with Agentforce.</p>
+              <p class="prod">Took repetitive sorting off people's plates so they could focus on solving cases.</p>
+            </div>
+          </div>
+        </div>
+        <p class="lens-note">Results from my work at NEC Software Solutions, July 2024 to present.</p>
+      </div>
+    </section>
 
+    <!-- Case study -->
+    <section id="case-study" aria-labelledby="case-title" style="padding-top:0">
+      <div class="wrap">
+        <div class="case">
+          <div class="case-grid">
+            <div>
+              <h2 class="title" id="case-title">Steam Discovery Mode</h2>
+              <p class="intro">Finding a new game on Steam takes a lot of effort. I researched why, then designed a mode
+                that makes exploring easier.</p>
+              <ol class="flow" style="margin:28px 0 0; padding:0; list-style:none">
+                <li><b>Researched.</b> Ran a survey and qualitative interviews on game-discovery pain points.</li>
+                <li><b>Defined who it's for.</b> Chose "Discovery Seekers" as the target persona.</li>
+                <li><b>Designed.</b> Created an intent-based Discovery Mode with four features.</li>
+                <li><b>Prioritized and measured.</b> Set success metrics and guardrails, then wrote user flows, edge
+                  cases and a PRD.</li>
+              </ol>
+              <div class="links">
+                <!-- Replace these placeholder URLs with your real links. -->
+                <a class="btn primary"
+                  href="https://docs.google.com/document/d/1uvuDKakM-mr6goLjxYqnpVT8TrUQn1CaOm6xOGhzVMM/edit?usp=sharing"
+                  target="_blank" rel="noopener">PRD</a>
+                <a class="btn ghost"
+                  href="https://ai.studio/apps/1c4f307a-b59d-4630-bcca-7b7f34170235?fullscreenApplet=true"
+                  target="_blank" rel="noopener">Prototype</a>
+              </div>
+            </div>
 
-        <!-- =========================
-     HERO
-========================= -->
-
-        <section class="hero">
-
-            <div class="hero-inner reveal">
-
-                <div class="pill">
-                    <i></i>
-                    Software Engineer · Salesforce · Product
+            <div class="discover">
+              <div class="discover-label">Four features in Discovery Mode</div>
+              <div class="feat" id="feat">
+                <button type="button" aria-expanded="true">
+                  <span class="name">Different From Your Usual
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                      aria-hidden="true">
+                      <path d="M8 2v12M2 8h12" />
+                    </svg></span>
+                  <span class="more">
+                    <div>
+                      <p>Suggests games outside the genres you already play, so exploring doesn't mean starting from
+                        scratch.</p>
+                    </div>
+                  </span>
+                </button>
+                <button type="button" aria-expanded="false">
+                  <span class="name">Indie &amp; Hidden Gems
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                      aria-hidden="true">
+                      <path d="M8 2v12M2 8h12" />
+                    </svg></span>
+                  <span class="more">
+                    <div>
+                      <p>Brings lesser-known games forward instead of leaving them buried under bestsellers.</p>
+                    </div>
+                  </span>
+                </button>
+                <button type="button" aria-expanded="false">
+                  <span class="name">Short Discovery Cards
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                      aria-hidden="true">
+                      <path d="M8 2v12M2 8h12" />
+                    </svg></span>
+                  <span class="more">
+                    <div>
+                      <p>Lets you judge a game in a glance, so you spend less effort deciding what to look at.</p>
+                    </div>
+                  </span>
+                </button>
+                <button type="button" aria-expanded="false">
+                  <span class="name">Why This Game?
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                      aria-hidden="true">
+                      <path d="M8 2v12M2 8h12" />
+                    </svg></span>
+                  <span class="more">
+                    <div>
+                      <p>Explains each suggestion, so you can trust it and know what to expect before you click.</p>
+                    </div>
+                  </span>
+                </button>
+                <div
+                  style="margin:16px 16px 8px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--muted);">
+                  <b style="color:var(--ink);">Goal:</b> reduce unintended engagement while preserving intentional
+                  Instagram usage.
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="case" style="margin-top:32px;">
+          <div class="case-grid">
+            <div>
+              <h2 class="title">Instagram — Intentional Usage</h2>
+              <p class="intro">Instagram makes it easy to lose track of time. I researched why users experience
+                unintended prolonged usage, then designed interventions that help them regain control without taking
+                away intentional engagement.</p>
+              <ol class="flow" style="margin:28px 0 0; padding:0; list-style:none">
+                <li><b>Researched.</b> Ran a quantitative survey with 26 users and 5 qualitative interviews to
+                  understand usage patterns, triggers and pain points.</li>
+                <li><b>Defined who it's for.</b> Identified Passive Scrollers &amp; Lurkers as the primary target
+                  persona.</li>
+                <li><b>Designed.</b> Created an Intentional Usage experience with three interventions: Persistent Limit
+                  Re-entry Check, Take a Break, and Non-Scrollable Shared Reel View.</li>
+                <li><b>Prioritized and measured.</b> Prioritized problems using PIF scoring, defined success metrics and
+                  guardrails, then created user flows, edge cases and a PRD.</li>
+              </ol>
+              <div class="links">
+                <a class="btn primary"
+                  href="https://docs.google.com/document/d/1zoGd7jv9GJYjou74h1nHLWumwP3NvK-SjHDxhmmwcGo/edit?usp=sharing"
+                  target="_blank" rel="noopener">PRD</a>
+                <a class="btn ghost"
+                  href="https://ai.studio/apps/9b4c00f1-52c0-4a95-bd8e-a57817c2b0fc?fullscreenApplet=true"
+                  target="_blank" rel="noopener">Prototype</a>
+              </div>
+            </div>
+            <div class="discover">
+              <div class="discover-label">Three interventions for Intentional Usage</div>
+              <div class="feat" id="instagram-feat">
+                <button type="button" aria-expanded="true">
+                  <span class="name">Persistent Limit Re-entry
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                      aria-hidden="true">
+                      <path d="M8 2v12M2 8h12" />
+                    </svg></span>
+                  <span class="more">
+                    <div>
+                      <p>Prompts users who reopen Instagram after reaching their daily limit, creating a deliberate
+                        choice before they continue.</p>
+                    </div>
+                  </span>
+                </button>
+                <button type="button" aria-expanded="false">
+                  <span class="name">Take a Break
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                      aria-hidden="true">
+                      <path d="M8 2v12M2 8h12" />
+                    </svg></span>
+                  <span class="more">
+                    <div>
+                      <p>Introduces an earlier intervention during prolonged scrolling, helping users pause before
+                        unintended usage becomes a longer session.</p>
+                    </div>
+                  </span>
+                </button>
+                <button type="button" aria-expanded="false">
+                  <span class="name">Non-Scrollable Shared Reel
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                      aria-hidden="true">
+                      <path d="M8 2v12M2 8h12" />
+                    </svg></span>
+                  <span class="more">
+                    <div>
+                      <p>Lets users watch a Reel shared through DMs without opening the recommendation loop or turning
+                        one intentional action into passive scrolling.</p>
+                    </div>
+                  </span>
+                </button>
+              </div>
+              <div
+                style="margin:16px 16px 8px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--muted);">
+                <b style="color:var(--ink);">Goal:</b> reduce unintended engagement while preserving intentional
+                Instagram usage.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                <h1>
-                    Engineering depth.<br>
-                    <span class="gradient">
-                        Product thinking.
-                    </span>
-                </h1>
+    <!-- Experience -->
+    <section id="experience" aria-labelledby="exp-title" style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 class="title" id="exp-title">Experience</h2>
+          <p>From machine learning to Salesforce, always close to the people using what I build.</p>
+        </div>
 
-                <p>
-                    Software Engineer with 2+ years of experience building Salesforce
-                    products and translating business requirements into scalable,
-                    customer-facing solutions.
-                </p>
+        <div class="tl">
+          <div class="job now-job">
+            <h3>NEC Software Solutions (India)</h3>
+            <p class="co">Mumbai</p>
 
-                <div class="actions">
-
-                    <a class="btn primary" href="#projects">
-                        Explore my work
-                    </a>
-
-                    <a class="btn secondary" href="#contact">
-                        Let's connect
-                    </a>
-
-                </div>
-
-                <div class="scroll">
-                    Scroll to explore
-                </div>
-
+            <div class="role" style="margin-top:20px">
+              <h4>Software Engineer</h4>
+              <p class="when">July 2026 to present</p>
+              <ul>
+                <li>Designed Lightning Web Components and Apex solutions, including reusable components that improved
+                  performance and user experience.</li>
+                <li>Delivered Sales Cloud and Service Cloud work covering case management, automation and service
+                  process improvements.</li>
+                <li>Worked with Business Analysts, QA and stakeholders to turn requirements into scalable solutions.
+                </li>
+              </ul>
             </div>
 
-        </section>
-
-
-        <!-- =========================
-     ABOUT
-========================= -->
-
-        <section class="about reveal" id="about">
-
-            <div class="section-head">
-
-                <div class="kicker">
-                    01 — About
-                </div>
-
-                <h2>
-                    From building solutions<br>
-                    to shaping products.
-                </h2>
-
+            <div class="role">
+              <h4>Associate Software Engineer</h4>
+              <p class="when">July 2024 to June 2026</p>
+              <ul>
+                <li>Built and maintained Salesforce Flows, validation rules and approval processes.</li>
+                <li>Configured security with Permission Sets, Sharing Rules, Role Hierarchy, Public Groups, Queues and
+                  Field-Level Security.</li>
+                <li>Managed object configuration, page layouts, record types, custom metadata and custom settings.</li>
+                <li>Contributed to code reviews, deployments, debugging and production support.</li>
+              </ul>
             </div>
+          </div>
 
-
-            <div class="about-grid">
-
-                <article class="glass about-copy">
-
-                    <p>
-                        I'm a Software Engineer with 2+ years of experience building
-                        Salesforce products and translating business requirements into
-                        scalable, customer-facing solutions.
-                    </p>
-
-                    <p>
-                        My engineering work has given me hands-on experience with Salesforce
-                        development, automation, architecture, stakeholder collaboration
-                        and end-to-end solution delivery.
-                    </p>
-
-                    <p>
-                        I'm now focused on combining that technical foundation with
-                        customer-focused product decision-making through problem framing,
-                        user research, prioritization, product flows and success metrics.
-                    </p>
-
-                </article>
-
-
-                <div class="fact-stack">
-
-                    <div class="glass fact">
-
-                        <div class="fact-label">
-                            Based in
-                        </div>
-
-                        <div class="fact-value">
-                            Mumbai, India
-                        </div>
-
-                    </div>
-
-
-                    <div class="glass fact">
-
-                        <div class="fact-label">
-                            Current focus
-                        </div>
-
-                        <div class="fact-value">
-                            Product Management
-                        </div>
-
-                    </div>
-
-
-                    <div class="glass fact">
-
-                        <div class="fact-label">
-                            Engineering domain
-                        </div>
-
-                        <div class="fact-value">
-                            Salesforce CRM
-                        </div>
-
-                    </div>
-
-
-                    <div class="glass fact">
-
-                        <div class="fact-label">
-                            Education
-                        </div>
-
-                        <div class="fact-value">
-                            B.E. Computer Engineering · 8.29 CGPA
-                        </div>
-
-                    </div>
-
-                </div>
-
+          <div class="job">
+            <h3>Code Wind Technologies</h3>
+            <p class="co">Remote</p>
+            <div class="role" style="margin-top:20px">
+              <h4>Machine Learning Intern</h4>
+              <p class="when">June 2022 to August 2022</p>
+              <ul>
+                <li>Built a face-mask detection proof of concept with Keras and neural networks to spot safe and unsafe
+                  mask use during COVID-19.</li>
+                <li>Reached 98% detection accuracy, telling proper masks apart from faces covered by cloth, hands or a
+                  badly worn mask.</li>
+                <li>Did data preprocessing, feature engineering and model evaluation in Python.</li>
+              </ul>
             </div>
-
-        </section>
-
-
-        <!-- =========================
-     FOCUS / SKILLS
-========================= -->
-
-        <section class="focus reveal" id="focus">
-
-            <div class="section-head">
-
-                <div class="kicker">
-                    02 — Capabilities
-                </div>
-
-                <h2>
-                    What I bring to a team.
-                </h2>
-
-                <p class="intro">
-                    A combination of product thinking, Salesforce engineering,
-                    technical breadth and customer-focused problem solving.
-                </p>
-
-            </div>
-
-
-            <div class="focus-grid">
-
-
-                <article class="focus-card">
-
-                    <div class="num">
-                        01
-                    </div>
-
-                    <h3>
-                        Product Management
-                    </h3>
-
-                    <p>
-                        Product strategy, product decision-making, problem framing,
-                        user research, solution prioritization and UX/product thinking.
-                    </p>
-
-                </article>
-
-
-                <article class="focus-card">
-
-                    <div class="num">
-                        02
-                    </div>
-
-                    <h3>
-                        Salesforce Engineering
-                    </h3>
-
-                    <p>
-                        Apex, LWC, SOQL, SOSL, Salesforce CRM, Sales Cloud and Service Cloud.
-                    </p>
-
-                </article>
-
-
-                <article class="focus-card">
-
-                    <div class="num">
-                        03
-                    </div>
-
-                    <h3>
-                        Automation & Architecture
-                    </h3>
-
-                    <p>
-                        Salesforce Flows, reusable components, modular architecture
-                        and scalable solution delivery.
-                    </p>
-
-                </article>
-
-
-                <article class="focus-card">
-
-                    <div class="num">
-                        04
-                    </div>
-
-                    <h3>
-                        Technical Stack
-                    </h3>
-
-                    <p>
-                        Java, Python, JavaScript, HTML, CSS, MySQL, MongoDB,
-                        SQLite and AWS.
-                    </p>
-
-                </article>
-
-
-                <article class="focus-card">
-
-                    <div class="num">
-                        05
-                    </div>
-
-                    <h3>
-                        Product Tools
-                    </h3>
-
-                    <p>
-                        Figma, Notion, Google AI Studio, Power BI, Tableau and Excel.
-                    </p>
-
-                </article>
-
-
-                <article class="focus-card">
-
-                    <div class="num">
-                        06
-                    </div>
-
-                    <h3>
-                        Collaboration
-                    </h3>
-
-                    <p>
-                        Stakeholder collaboration, prioritization, requirements
-                        translation and end-to-end solution delivery.
-                    </p>
-
-                </article>
-
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-     EXPERIENCE
-========================= -->
-
-        <section class="experience reveal" id="experience">
-
-            <div class="section-head">
-
-                <div class="kicker">
-                    03 — Experience
-                </div>
-
-                <h2>
-                    Building at the<br>
-                    intersection of tech & users.
-                </h2>
-
-            </div>
-
-
-            <div class="timeline">
-
-
-                <article class="role">
-
-                    <div class="role-top">
-
-                        <div>
-
-                            <h3>
-                                Software Engineer
-                            </h3>
-
-                            <div class="company">
-                                NEC Software Solutions (India)
-                            </div>
-
-                            <div class="location">
-                                Mumbai
-                            </div>
-
-                        </div>
-
-
-                        <div class="date">
-                            July 2024 — Present<br>
-                            2+ years
-                        </div>
-
-                    </div>
-
-
-                    <ul>
-
-                        <li>
-                            Developed and optimized LWC and Apex solutions for Sales Cloud,
-                            reducing custom code by 30% by replacing complex logic with
-                            scalable Salesforce Flows.
-                        </li>
-
-                        <li>
-                            Re-architected LWC components into modular and reusable components,
-                            reducing component load time by 20% and improving application
-                            performance and maintainability.
-                        </li>
-
-                        <li>
-                            Streamlined Service Cloud security by reducing dependency on
-                            Profiles and adopting Permission Sets, simplifying access
-                            management and reducing profile complexity by 40%.
-                        </li>
-
-                        <li>
-                            Automated Email-to-Case conversion and case prioritization using
-                            Agentforce, reducing manual case triage by 50% and improving
-                            case-handling efficiency.
-                        </li>
-
-                        <li>
-                            Contributed to code reviews, deployments, debugging and production
-                            support following Salesforce best practices.
-                        </li>
-
-                    </ul>
-
-                </article>
-
-
-                <article class="role">
-
-                    <div class="role-top">
-
-                        <div>
-
-                            <h3>
-                                Machine Learning Intern
-                            </h3>
-
-                            <div class="company">
-                                Code Wind Technologies
-                            </div>
-
-                            <div class="location">
-                                Remote
-                            </div>
-
-                        </div>
-
-
-                        <div class="date">
-                            June 2022 — August 2022
-                        </div>
-
-                    </div>
-
-
-                    <ul>
-
-                        <li>
-                            Developed a face-mask detection proof of concept using Keras
-                            and neural networks to identify safe/unsafe mask usage among
-                            employees and students during COVID-19.
-                        </li>
-
-                        <li>
-                            Achieved 98% detection accuracy, distinguishing properly worn
-                            masks from cases where the face was covered with cloth, hands,
-                            or incorrectly worn masks.
-                        </li>
-
-                    </ul>
-
-                </article>
-
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-     CASE STUDIES
-========================= -->
-
-        <section class="projects reveal" id="projects">
-
-            <div class="section-head">
-
-                <div class="kicker">
-                    04 — Selected Work
-                </div>
-
-                <h2>
-                    Projects with a<br>
-                    product lens.
-                </h2>
-
-                <p class="intro">
-                    Case studies that show how I move from identifying a problem
-                    to researching, prioritizing and designing a solution.
-                </p>
-
-            </div>
-
-
-            <div class="project-grid">
-
-
-                <!-- STEAM CASE STUDY -->
-
-                <article class="project">
-
-                    <div class="tag">
-                        PRODUCT CASE STUDY · STEAM
-                    </div>
-
-
-                    <h3>
-                        Steam Discovery Mode
-                    </h3>
-
-
-                    <p>
-                        A product concept focused on reducing game-discovery effort
-                        and encouraging exploration.
-                    </p>
-
-
-                    <ul>
-
-                        <li>
-                            Conducted survey and qualitative user research to identify
-                            Steam game-discovery pain points.
-                        </li>
-
-                        <li>
-                            Defined Discovery Seekers as the target persona.
-                        </li>
-
-                        <li>
-                            Designed Discovery Mode featuring Different From Your Usual,
-                            Indie & Hidden Gems, Short Discovery Cards and Why This Game?
-                        </li>
-
-                        <li>
-                            Prioritized solutions and defined success metrics,
-                            guardrails, user flows, edge cases and a PRD.
-                        </li>
-
-                    </ul>
-
-
-                    <div class="project-actions">
-
-                        <!-- Replace these placeholder URLs -->
-
-                        <a class="project-button" href="file:///C:/Users/Siddhesh/Downloads/PRD%20for%20STEAM.pdf"
-                            target="_blank" rel="noopener">
-                            PRD ↗
-                        </a>
-
-                        <a class="project-button"
-                            href="https://ai.studio/apps/1c4f307a-b59d-4630-bcca-7b7f34170235?fullscreenApplet=true"
-                            target="_blank" rel="noopener">
-                            Prototype ↗
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-                <!-- INSTAGRAM CASE STUDY -->
-
-                <article class="project alt">
-
-                    <div class="tag">
-                        PRODUCT CASE STUDY · INSTAGRAM
-                    </div>
-
-
-                    <h3>
-                        Instagram — Intentional Usage
-                    </h3>
-
-
-                    <p>
-                        Instagram makes it easy to lose track of time. I researched why
-                        users experience unintended prolonged usage, then designed
-                        interventions that help them regain control without taking away
-                        intentional engagement.
-                    </p>
-
-
-                    <ul>
-
-                        <li>
-                            <strong>Researched.</strong>
-                            Ran a quantitative survey with 26 users and 5 qualitative
-                            interviews to understand usage patterns, triggers and pain points.
-                        </li>
-
-                        <li>
-                            <strong>Defined who it's for.</strong>
-                            Identified <strong>Passive Scrollers & Lurkers</strong>
-                            as the primary target persona.
-                        </li>
-
-                        <li>
-                            <strong>Designed.</strong>
-                            Created an Intentional Usage experience with three interventions:
-                            Persistent Limit Re-entry Check, Take a Break and Non-Scrollable
-                            Shared Reel View.
-                        </li>
-
-                        <li>
-                            <strong>Prioritized and measured.</strong>
-                            Prioritized problems using PIF scoring, defined success metrics
-                            and guardrails, then created user flows, edge cases and a PRD.
-                        </li>
-
-                    </ul>
-
-
-                    <div class="project-actions">
-
-                        <!-- Replace these placeholder URLs -->
-
-                        <a class="project-button" href="file:///C:/Users/Siddhesh/Downloads/Instagram%20PRD%20.pdf"
-                            target="_blank" rel="noopener">
-                            PRD ↗
-                        </a>
-
-                        <a class="project-button"
-                            href="https://ai.studio/apps/9b4c00f1-52c0-4a95-bd8e-a57817c2b0fc?fullscreenApplet=true"
-                            target="_blank" rel="noopener">
-                            Prototype ↗
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-     EDUCATION
-========================= -->
-
-        <section class="education reveal" id="education">
-
-            <div class="section-head">
-
-                <div class="kicker">
-                    05 — Education & Learning
-                </div>
-
-                <h2>
-                    The foundation.
-                </h2>
-
-            </div>
-
-
-            <div class="edu-grid">
-
-
-                <article class="edu-card dark">
-
-                    <h3>
-                        B.E. Computer Engineering
-                    </h3>
-
-                    <ul>
-
-                        <li>
-                            University of Mumbai · 2019 — 2023
-                        </li>
-
-                        <li>
-                            CGPA: 8.29
-                        </li>
-
-                    </ul>
-
-                </article>
-
-
-                <article class="edu-card">
-
-                    <h3>
-                        Learning & Certifications
-                    </h3>
-
-                    <ul>
-
-                        <li>
-                            HelloPM — AI Product Management
-                        </li>
-
-                        <li>
-                            Data Analysis — PrepInsta
-                        </li>
-
-                        <li>
-                            Cloud Computing — PrepInsta
-                        </li>
-
-                    </ul>
-
-                </article>
-
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-     CONTACT
-========================= -->
-
-        <section class="contact reveal" id="contact">
-
-            <div class="contact-card">
-
-                <div class="kicker">
-                    06 — Contact
-                </div>
-
-                <h2>
-                    Let's build something meaningful.
-                </h2>
-
-                <p>
-                    Interested in product opportunities where an engineering background,
-                    Salesforce experience and customer-focused product thinking can
-                    work together.
-                </p>
-
-
-                <div class="links">
-
-                    <a class="link" href="mailto:siddheshmahadik726@gmail.com">
-                        siddheshmahadik726@gmail.com
-                    </a>
-
-
-                    <a class="link" href="tel:+919082290395">
-                        +91 9082290395
-                    </a>
-
-
-                    <a class="link" href="https://www.linkedin.com" target="_blank" rel="noopener">
-                        LinkedIn ↗
-                    </a>
-
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-    </main>
-
-
-    <footer>
-
-        <span>
-            © Siddhesh Mahadik
-        </span>
-
-        <span>
-            Software Engineer · Salesforce · Product
-        </span>
-
-    </footer>
-
-
-    <script>
-
-        const menu = document.getElementById("menu");
-        const nav = document.getElementById("nav");
-
-        menu.addEventListener(
-            "click",
-            () => nav.classList.toggle("open")
-        );
-
-
-        document
-            .querySelectorAll(".nav-links a")
-            .forEach(
-                a =>
-                    a.addEventListener(
-                        "click",
-                        () => nav.classList.remove("open")
-                    )
-            );
-
-
-        const observer =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(
-                        entry => {
-
-                            if (entry.isIntersecting) {
-
-                                entry.target.classList.add("visible");
-
-                                observer.unobserve(entry.target);
-
-                            }
-
-                        }
-                    );
-
-                },
-                {
-                    threshold: .08
-                }
-            );
-
-
-        document
-            .querySelectorAll(".reveal")
-            .forEach(
-                el => observer.observe(el)
-            );
-
-    </script>
-
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" aria-labelledby="proj-title" style="padding-top:0">
+      <div class="wrap split">
+        <div class="sec-head">
+          <h2 class="title" id="proj-title">Other projects</h2>
+        </div>
+        <div>
+          <article class="proj">
+            <h3>GIS Based Inventory of Sports Infrastructure</h3>
+            <span class="tag">Smart India Hackathon 2022 · Final-year capstone</span>
+            <p>An Android app that helps athletes and sports fans across Mumbai find facilities and book hourly sessions
+              that fit their schedule.</p>
+            <p>Using QGIS and geospatial mapping, it shows what general map apps miss: court dimensions, available
+              equipment and amenities.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" aria-labelledby="skills-title" style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 class="title" id="skills-title">Skills</h2>
+          <p>Technical depth on one side, product thinking on the other.</p>
+        </div>
+        <div class="skills">
+          <div>
+            <h3>Product</h3>
+            <ul>
+              <li>Product strategy</li>
+              <li>Problem framing</li>
+              <li>User research</li>
+              <li>Solution prioritization</li>
+              <li>Product flows and decisions</li>
+              <li>UX and product thinking</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Engineering</h3>
+            <ul>
+              <li>Apex, SOQL and SOSL</li>
+              <li>Lightning Web Components</li>
+              <li>Salesforce Flows, Sales Cloud and Service Cloud</li>
+              <li>Java, Python and JavaScript</li>
+              <li>HTML and CSS</li>
+              <li>MySQL, MongoDB and SQLite</li>
+              <li>AWS</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Tools</h3>
+            <ul>
+              <li>Figma and Notion</li>
+              <li>Power BI, Tableau and Excel</li>
+              <li>Git, GitHub and VS Code</li>
+              <li>Salesforce CLI</li>
+              <li>Google AI Studio</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section aria-labelledby="edu-title" style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 class="title" id="edu-title">Education and learning</h2>
+        </div>
+        <div class="edu">
+          <div class="panel">
+            <h3>Education</h3>
+            <p class="big">B.E. Computer Engineering</p>
+            <p class="sub">University of Mumbai · 2019 to 2023</p>
+            <p class="sub">CGPA 8.29</p>
+          </div>
+          <div class="panel">
+            <h3>Learning</h3>
+            <ul>
+              <li>HelloPM — AI Product Management<span>Product Management learning</span></li>
+              <li>Data Analysis<span>PrepInsta</span></li>
+              <li>Cloud Computing<span>PrepInsta</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <div class="contact-card">
+          <h2 id="contact-title">Let's talk about building the right thing.</h2>
+          <p>I'd like to hear from product teams, and from anyone who thinks an engineering background could help
+            theirs.</p>
+          <div class="actions">
+            <a class="btn primary" href="mailto:siddheshmahadik726@gmail.com">Email me</a>
+            <a class="btn line" href="https://www.linkedin.com/in/siddheshmahadik-35399a201" target="_blank"
+              rel="noopener">LinkedIn</a>
+            <a class="btn line" href="https://github.com/Siddhesheheh" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn line" href="tel:+919082290395">+91 90822 90395</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Siddhesh Mahadik</span>
+      <span>Mumbai, India</span>
+    </div>
+  </footer>
+
+  <script>
+    // Lens switch: "What I built" / "Why it mattered"
+    (function () {
+      var seg = document.getElementById('seg');
+      var impact = document.getElementById('impact');
+      var buttons = seg.querySelectorAll('button');
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var lens = btn.getAttribute('data-lens');
+          seg.setAttribute('data-lens', lens);
+          impact.setAttribute('data-lens', lens);
+          buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+        });
+      });
+    })();
+
+    // Discovery Mode features: one open at a time
+    (function () {
+      var buttons = document.querySelectorAll('#feat button, #instagram-feat button');
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var open = btn.getAttribute('aria-expanded') === 'true';
+          buttons.forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
+          if (!open) btn.setAttribute('aria-expanded', 'true');
+        });
+      });
+    })();
+  </script>
 </body>
 
 </html>
